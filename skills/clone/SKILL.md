@@ -1,6 +1,7 @@
 ---
 name: clone
 description: Smart git clone with org-specific SSH keys, versioning, and mirror support. Use instead of git clone.
+allowed-tools: Bash(clone:*)
 ---
 
 # Clone

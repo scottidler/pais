@@ -1,6 +1,7 @@
 ---
 name: ls-owners
 description: Analyze CODEOWNERS files and detect unowned code paths. Use for code ownership audits.
+allowed-tools: Bash(ls-owners:*)
 ---
 
 # ls-owners

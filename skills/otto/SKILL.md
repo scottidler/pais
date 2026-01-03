@@ -1,6 +1,7 @@
 ---
 name: otto
 description: Otto task runner for builds and CI. Use when running tests, builds, CI pipelines, or when the user mentions otto, make, task runner, or .otto.yml.
+allowed-tools: Bash(otto:*)
 ---
 
 # Otto Task Runner

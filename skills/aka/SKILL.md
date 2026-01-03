@@ -1,6 +1,7 @@
 ---
 name: aka
 description: High-performance shell alias manager. Use when managing shell aliases, querying alias expansions, or optimizing shell startup.
+allowed-tools: Bash(aka:*)
 ---
 
 # AKA - Also Known As

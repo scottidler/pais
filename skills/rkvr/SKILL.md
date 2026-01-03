@@ -1,6 +1,7 @@
 ---
 name: rkvr
 description: Safe file deletion with archiving and recovery. Use rmrf instead of rm -rf to enable recovery of deleted files.
+allowed-tools: Bash(rmrf:*), Bash(bkup:*), Bash(rcvr:*), Bash(ls-rmrf:*), Bash(ls-bkup:*), Bash(bkup-rmrf:*)
 ---
 
 # RKVR - Recoverable File Operations

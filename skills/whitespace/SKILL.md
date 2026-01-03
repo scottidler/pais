@@ -1,6 +1,7 @@
 ---
 name: whitespace
 description: Remove trailing whitespace from files. Use as a linting step or to clean up code before commits.
+allowed-tools: Bash(whitespace:*)
 ---
 
 # Whitespace

@@ -1,6 +1,7 @@
 ---
 name: reposlug
 description: Extract owner/repo slug from a git remote. Use for scripting and piping into other commands.
+allowed-tools: Bash(reposlug:*)
 ---
 
 # Reposlug

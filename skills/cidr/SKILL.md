@@ -1,6 +1,7 @@
 ---
 name: cidr
 description: CIDR calculator for network calculations. Use when working with IP addresses, subnets, or network ranges.
+allowed-tools: Bash(cidr:*)
 ---
 
 # CIDR Calculator

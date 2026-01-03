@@ -1,6 +1,7 @@
 ---
 name: dashify
 description: Normalize filenames by lowercasing and replacing spaces/underscores with dashes. Use when cleaning up file names.
+allowed-tools: Bash(dashify:*)
 ---
 
 # Dashify

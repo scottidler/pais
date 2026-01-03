@@ -1,6 +1,6 @@
 # PAIS Architecture
 
-> Auto-generated on 2026-01-03 01:48:01 by `pais`
+> Auto-generated on 2026-01-03 12:35:50 by `pais`
 
 ## Overview
 
@@ -15,6 +15,7 @@
 | dashify | deferred | Normalize filenames by lowercasing and replacin... |
 | ls-github-repos | deferred | List all repositories under a GitHub organizati... |
 | ls-stale-branches | deferred | Find remote branches that haven't been updated ... |
+| gx | deferred | Multi-repo Git operations - bulk changes, PRs, ... |
 | ls-git-repos | deferred | Recursively find all local git repositories. Us... |
 | otto | deferred | Otto task runner for builds and CI. Use when ru... |
 | ls-stale-prs | deferred | Find open PRs that haven't been updated in N da... |
@@ -57,8 +58,8 @@
 
 ## Paths
 
-- **Plugins:** `/home/saidler/.config/pais/plugins`
-- **Skills:** `/home/saidler/.config/pais/skills`
-- **History:** `/home/saidler/.config/pais/history`
-- **Registries:** `/home/saidler/.config/pais/registries`
+- **Plugins:** `~/.config/pais/plugins`
+- **Skills:** `~/.config/pais/skills`
+- **History:** `~/.config/pais/history`
+- **Registries:** `~/.config/pais/registries`
 

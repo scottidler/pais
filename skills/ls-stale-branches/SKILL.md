@@ -1,6 +1,7 @@
 ---
 name: ls-stale-branches
 description: Find remote branches that haven't been updated in N days. Use for branch cleanup audits.
+allowed-tools: Bash(ls-stale-branches:*)
 ---
 
 # ls-stale-branches

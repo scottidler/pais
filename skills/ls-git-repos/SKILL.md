@@ -1,6 +1,7 @@
 ---
 name: ls-git-repos
 description: Recursively find all local git repositories. Use to discover what repos are cloned locally.
+allowed-tools: Bash(ls-git-repos:*)
 ---
 
 # ls-git-repos

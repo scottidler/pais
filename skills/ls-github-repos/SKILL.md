@@ -1,6 +1,7 @@
 ---
 name: ls-github-repos
 description: List all repositories under a GitHub organization or user. Use for discovering and cloning org repos.
+allowed-tools: Bash(ls-github-repos:*)
 ---
 
 # ls-github-repos

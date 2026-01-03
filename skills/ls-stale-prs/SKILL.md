@@ -1,6 +1,7 @@
 ---
 name: ls-stale-prs
 description: Find open PRs that haven't been updated in N days. Use for PR cleanup and review audits.
+allowed-tools: Bash(ls-stale-prs:*), Bash(gh:*)
 ---
 
 # ls-stale-prs
