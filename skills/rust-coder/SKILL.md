@@ -1,9 +1,17 @@
 ---
 name: rust-coder
-description: Write Rust code using Scott's conventions. Use when creating Rust CLIs, libraries, reviewing Rust code, or when the user mentions Rust, cargo, or CLI tools.
+description: Write Rust code using Scott's conventions. USE WHEN creating Rust CLIs, libraries, reviewing Rust code, or when the user mentions Rust, cargo, or CLI tools.
 ---
 
 # Rust Coding Conventions
+
+## Workflow Routing
+
+| Intent | Workflow |
+|--------|----------|
+| new CLI project | workflows/new-cli.md |
+| create new CLI | workflows/new-cli.md |
+| scaffold CLI | workflows/new-cli.md |
 
 This skill teaches you Scott's Rust coding patterns, tools, and conventions. Follow these guidelines when writing or reviewing Rust code.
 
