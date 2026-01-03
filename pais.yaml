@@ -1,13 +1,36 @@
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.10s
-     Running `target/debug/pais config show --format yaml`
 paths:
-  plugins: /home/saidler/.config/pais/plugins
-  skills: /home/saidler/.config/pais/skills
-  history: /home/saidler/.config/pais/history
-  registries: /home/saidler/.config/pais/registries
+  plugins: ~/.config/pais/plugins
+  skills: ~/.config/pais/skills
+  history: ~/.config/pais/history
+  registries: ~/.config/pais/registries
+
 registries:
   core: https://raw.githubusercontent.com/scottidler/pais/main/registry/plugins.yaml
-hooks:
-  security_enabled: true
-  history_enabled: true
 
+hooks:
+  security-enabled: true
+  history-enabled: true
+  ui-enabled: true
+
+observability:
+  enabled: true
+  sinks:
+    - file
+
+environment:
+  repos-dir: ~/repos/
+
+  tool-preferences:
+    ls: eza
+    tree: eza --tree
+    grep: rg
+    find: fd
+    cat: bat
+
+  tools:
+    otto:
+      github: otto-rs/otto
+      description: CI runner, task automation
+    clone:
+      github: scottidler/clone
+      description: Git clone to repos-dir/{org}/{repo}
