@@ -2,9 +2,6 @@
 .env
 *.secret
 
-# Installed plugins (from registries)
-plugins/
-
 # Runtime data
 history/
 registries/
