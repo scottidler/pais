@@ -1,33 +1,12 @@
-generated: 2026-01-03T08:09:54.904613440+00:00
+generated: 2026-01-03T08:16:47.131652103+00:00
 total_skills: 16
 core_count: 1
 deferred_count: 15
 skills:
-  reposlug:
-    name: reposlug
-    path: reposlug/SKILL.md
-    description: Extract owner/repo slug from a git remote. Use for scripting and piping into other commands.
-    triggers:
-    - git
-    tier: deferred
-  aka:
-    name: aka
-    path: aka/SKILL.md
-    description: High-performance shell alias manager. Use when managing shell aliases, querying alias expansions, or optimizing shell startup.
-    triggers:
-    - alia
-    - aliase
-    - expansion
-    - managing
-    - optimizing
-    - querying
-    - shell
-    - startup
-    tier: deferred
-  ls-stale-prs:
-    name: ls-stale-prs
-    path: ls-stale-prs/SKILL.md
-    description: Find open PRs that haven't been updated in N days. Use for PR cleanup and review audits.
+  ls-github-repos:
+    name: ls-github-repos
+    path: ls-github-repos/SKILL.md
+    description: List all repositories under a GitHub organization or user. Use for discovering and cloning org repos.
     triggers: []
     tier: deferred
   otto:
@@ -45,24 +24,97 @@ skills:
     - task
     - test
     tier: deferred
-  ls-github-repos:
-    name: ls-github-repos
-    path: ls-github-repos/SKILL.md
-    description: List all repositories under a GitHub organization or user. Use for discovering and cloning org repos.
+  rkvr:
+    name: rkvr
+    path: rkvr/SKILL.md
+    description: Safe file deletion with archiving and recovery. Use rmrf instead of rm -rf to enable recovery of deleted files.
     triggers: []
     tier: deferred
-  core:
-    name: core
-    path: core/SKILL.md
-    description: Core operating principles and preferences. Always loaded at session start.
-    triggers: []
-    tier: core
   ls-git-repos:
     name: ls-git-repos
     path: ls-git-repos/SKILL.md
     description: Recursively find all local git repositories. Use to discover what repos are cloned locally.
     triggers:
     - git
+    tier: deferred
+  python-coder:
+    name: python-coder
+    path: python-coder/SKILL.md
+    description: Write Python code using Scott's conventions. Use when creating Python projects, packages, scripts, or when reviewing Python code. Uses uv, ruff, and modern tooling.
+    triggers:
+    - code
+    - creating
+    - package
+    - project
+    - python
+    - reviewing
+    - script
+    tier: deferred
+  reposlug:
+    name: reposlug
+    path: reposlug/SKILL.md
+    description: Extract owner/repo slug from a git remote. Use for scripting and piping into other commands.
+    triggers:
+    - git
+    tier: deferred
+  clone:
+    name: clone
+    path: clone/SKILL.md
+    description: Smart git clone with org-specific SSH keys, versioning, and mirror support. Use instead of git clone.
+    triggers:
+    - git
+    tier: deferred
+  ls-stale-branches:
+    name: ls-stale-branches
+    path: ls-stale-branches/SKILL.md
+    description: Find remote branches that haven't been updated in N days. Use for branch cleanup audits.
+    triggers: []
+    tier: deferred
+  ls-stale-prs:
+    name: ls-stale-prs
+    path: ls-stale-prs/SKILL.md
+    description: Find open PRs that haven't been updated in N days. Use for PR cleanup and review audits.
+    triggers: []
+    tier: deferred
+  cidr:
+    name: cidr
+    path: cidr/SKILL.md
+    description: CIDR calculator for network calculations. Use when working with IP addresses, subnets, or network ranges.
+    triggers:
+    - addresse
+    - network
+    - range
+    - subnet
+    - working
+    tier: deferred
+  aka:
+    name: aka
+    path: aka/SKILL.md
+    description: High-performance shell alias manager. Use when managing shell aliases, querying alias expansions, or optimizing shell startup.
+    triggers:
+    - alia
+    - aliase
+    - expansion
+    - managing
+    - optimizing
+    - querying
+    - shell
+    - startup
+    tier: deferred
+  ls-owners:
+    name: ls-owners
+    path: ls-owners/SKILL.md
+    description: Analyze CODEOWNERS files and detect unowned code paths. Use for code ownership audits.
+    triggers: []
+    tier: deferred
+  dashify:
+    name: dashify
+    path: dashify/SKILL.md
+    description: Normalize filenames by lowercasing and replacing spaces/underscores with dashes. Use when cleaning up file names.
+    triggers:
+    - cleaning
+    - file
+    - name
     tier: deferred
   rust-coder:
     name: rust-coder
@@ -86,67 +138,15 @@ skills:
       workflow: workflows/new-cli.md
     - intent: scaffold CLI
       workflow: workflows/new-cli.md
-  clone:
-    name: clone
-    path: clone/SKILL.md
-    description: Smart git clone with org-specific SSH keys, versioning, and mirror support. Use instead of git clone.
-    triggers:
-    - git
-    tier: deferred
+  core:
+    name: core
+    path: core/SKILL.md
+    description: Core operating principles and preferences. Always loaded at session start.
+    triggers: []
+    tier: core
   whitespace:
     name: whitespace
     path: whitespace/SKILL.md
     description: Remove trailing whitespace from files. Use as a linting step or to clean up code before commits.
     triggers: []
-    tier: deferred
-  rkvr:
-    name: rkvr
-    path: rkvr/SKILL.md
-    description: Safe file deletion with archiving and recovery. Use rmrf instead of rm -rf to enable recovery of deleted files.
-    triggers: []
-    tier: deferred
-  dashify:
-    name: dashify
-    path: dashify/SKILL.md
-    description: Normalize filenames by lowercasing and replacing spaces/underscores with dashes. Use when cleaning up file names.
-    triggers:
-    - cleaning
-    - file
-    - name
-    tier: deferred
-  ls-owners:
-    name: ls-owners
-    path: ls-owners/SKILL.md
-    description: Analyze CODEOWNERS files and detect unowned code paths. Use for code ownership audits.
-    triggers: []
-    tier: deferred
-  python-coder:
-    name: python-coder
-    path: python-coder/SKILL.md
-    description: Write Python code using Scott's conventions. Use when creating Python projects, packages, scripts, or when reviewing Python code. Uses uv, ruff, and modern tooling.
-    triggers:
-    - code
-    - creating
-    - package
-    - project
-    - python
-    - reviewing
-    - script
-    tier: deferred
-  ls-stale-branches:
-    name: ls-stale-branches
-    path: ls-stale-branches/SKILL.md
-    description: Find remote branches that haven't been updated in N days. Use for branch cleanup audits.
-    triggers: []
-    tier: deferred
-  cidr:
-    name: cidr
-    path: cidr/SKILL.md
-    description: CIDR calculator for network calculations. Use when working with IP addresses, subnets, or network ranges.
-    triggers:
-    - addresse
-    - network
-    - range
-    - subnet
-    - working
     tier: deferred
