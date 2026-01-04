@@ -1,11 +1,14 @@
+# PAIS Configuration
+# Personal AI System
+
+# Log level: trace, debug, info, warn, error, off
+# Can be overridden by RUST_LOG env var
+log-level: debug
+
 paths:
   plugins: ~/.config/pais/plugins
   skills: ~/.config/pais/skills
   history: ~/.config/pais/history
-  registries: ~/.config/pais/registries
-
-registries:
-  core: https://raw.githubusercontent.com/scottidler/pais/main/registry/plugins.yaml
 
 hooks:
   security-enabled: true

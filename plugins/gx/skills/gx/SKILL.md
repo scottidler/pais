@@ -96,17 +96,19 @@ GX-2026-01-03T20-30-52 ------- ➖ tatari-tv/philo-fe
 
 ✓ Output shows only philo has the pattern - philo-fe doesn't match.
 
-### Step 4: Execute changes (add --commit)
+### Step 4: Execute changes (add --commit 'message')
 
 ```bash
-$ gx create -p philo -f Dockerfile sub python:3.11 python:3.12 --commit
+$ gx create -p philo -f Dockerfile --commit 'Upgrade to Python 3.12' sub python:3.11 python:3.12
 ```
 
-### Step 5: Create PRs (add --pr)
+### Step 5: Create PRs (add --pr=normal)
 
 ```bash
-$ gx create -p philo -f Dockerfile sub python:3.11 python:3.12 --commit --pr
+$ gx create -p philo -f Dockerfile --commit 'Upgrade to Python 3.12' --pr=normal sub python:3.11 python:3.12
 ```
+
+**Note:** Always use `--pr=normal` or `--pr=draft`, never just `--pr` alone.
 
 ### Step 6: Review and merge
 
@@ -138,10 +140,12 @@ gx create -p PATTERN -f FILE sub OLD NEW    # Which files have OLD?
 ### Execution Commands (makes changes)
 
 ```bash
-gx create ... --commit                      # Apply changes locally
-gx create ... --commit --pr                 # Apply + create PRs
-gx create ... --commit --pr=draft           # Apply + create draft PRs
+gx create ... --commit 'message'            # Apply changes locally
+gx create ... --commit 'message' --pr=normal  # Apply + create PRs
+gx create ... --commit 'message' --pr=draft   # Apply + create draft PRs
 ```
+
+**CRITICAL:** Always use `--pr=normal` or `--pr=draft`, NEVER just `--pr` alone - it breaks argument parsing.
 
 ### Post-Change Commands
 
