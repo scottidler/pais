@@ -1,6 +1,6 @@
 # PAIS Architecture
 
-> Auto-generated on 2026-01-03 12:35:50 by `pais`
+> Auto-generated on 2026-01-04 08:48:06 by `pais`
 
 ## Overview
 
@@ -61,5 +61,4 @@
 - **Plugins:** `~/.config/pais/plugins`
 - **Skills:** `~/.config/pais/skills`
 - **History:** `~/.config/pais/history`
-- **Registries:** `~/.config/pais/registries`
 

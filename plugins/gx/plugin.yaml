@@ -1,0 +1,26 @@
+plugin:
+  name: gx
+  version: 1.0.0
+  description: Multi-repo Git operations with gx CLI - discover, refine, execute, review, merge across repositories
+  authors:
+    - Scott Idler <scott.a.idler@gmail.com>
+  language: mixed
+  license: MIT
+  repository: https://github.com/scottidler/gx
+
+pais:
+  core_version: ">=0.1.0"
+
+provides:
+  # This plugin provides a skill for gx multi-repo operations
+
+consumes:
+  # No dependencies on other plugins
+
+hooks:
+  PreToolUse: []
+  PostToolUse: []
+  Stop: []
+  SessionStart: []
+  SessionEnd: []
+
