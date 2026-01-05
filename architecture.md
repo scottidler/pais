@@ -1,6 +1,6 @@
 # PAIS Architecture
 
-> Auto-generated on 2026-01-04 08:48:06 by `pais`
+> Auto-generated on 2026-01-04 20:04:50 by `pais`
 
 ## Overview
 
@@ -13,6 +13,7 @@
 | Skill | Tier | Description |
 |-------|------|-------------|
 | dashify | deferred | Normalize filenames by lowercasing and replacin... |
+| modern-tools | deferred | Find and track modern Unix tool replacements in... |
 | ls-github-repos | deferred | List all repositories under a GitHub organizati... |
 | ls-stale-branches | deferred | Find remote branches that haven't been updated ... |
 | gx | deferred | Multi-repo Git operations - bulk changes, PRs, ... |

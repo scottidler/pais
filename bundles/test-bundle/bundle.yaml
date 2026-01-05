@@ -8,9 +8,9 @@ bundle:
 
 # Plugins in this bundle (installed in order)
 plugins:
-  # example-plugin:
-  #   required: true
-  #   description: Why this plugin is included
+  gx:
+    required: true
+    description: Multi-repo Git operations with gx CLI
 
 # Environment variables to set
 environment: {}
