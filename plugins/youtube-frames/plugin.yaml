@@ -1,0 +1,173 @@
+plugin:
+  name: youtube-frames
+  version: 0.1.0
+  description: Extract diagrams, code snippets, and slides from YouTube videos
+  authors:
+    - Scott Idler <scott.a.idler@gmail.com>
+  language: python
+  license: MIT
+  keywords:
+    - youtube
+    - video
+    - frames
+    - diagrams
+    - screenshots
+    - extraction
+    - ocr
+    - vision
+
+pais:
+  core-version: ">=0.1.0"
+
+provides:
+  youtube-frames:
+    contract: FrameExtractor
+    service: video-frame-extraction
+
+consumes:
+  youtube:
+    contract: YouTubeProvider
+    optional: true
+
+hooks:
+  PreToolUse: []
+  PostToolUse: []
+  Stop: []
+  SessionStart: []
+  SessionEnd: []
+
+config:
+  output-dir:
+    type: string
+    required: false
+    default: ~/.config/pais/research/youtube-frames
+    description: Directory to store extracted frames
+
+  cache-dir:
+    type: string
+    required: false
+    default: ~/.cache/pais/youtube-frames
+    description: Directory for downloaded videos and temp files
+
+  strategy:
+    type: string
+    required: false
+    default: hybrid
+    description: Extraction strategy (scene-change, interval, keyframe, chapters, hybrid)
+
+  scene-threshold:
+    type: float
+    required: false
+    default: 0.3
+    description: Scene change detection threshold (0.1=sensitive, 0.5=conservative)
+
+  interval-seconds:
+    type: int
+    required: false
+    default: 10
+    description: Seconds between frames for interval strategy
+
+  dedup-threshold:
+    type: int
+    required: false
+    default: 10
+    description: Perceptual hash distance for deduplication (lower=stricter)
+
+  classifier:
+    type: string
+    required: false
+    default: ocr
+    description: Classification method (ocr, claude, gpt4v, none)
+
+  max-frames:
+    type: int
+    required: false
+    default: 50
+    description: Maximum frames to keep after filtering
+
+  keep-video:
+    type: bool
+    required: false
+    default: false
+    description: Keep downloaded video after extraction
+
+  max-resolution:
+    type: int
+    required: false
+    default: 1080
+    description: Maximum video height to download
+
+actions:
+  extract:
+    description: Full pipeline - download, extract, filter, and classify frames
+    args:
+      - name: url
+        required: true
+        description: YouTube video URL or video ID
+      - name: output-dir
+        required: false
+        description: Override output directory
+      - name: strategy
+        required: false
+        default: hybrid
+        description: Extraction strategy
+      - name: classifier
+        required: false
+        default: ocr
+        description: Classification method
+
+  quick:
+    description: Fast extraction - scene detection + dedup only (no classification)
+    args:
+      - name: url
+        required: true
+        description: YouTube video URL or video ID
+      - name: output-dir
+        required: false
+        description: Output directory
+
+  chapters:
+    description: Extract one frame per video chapter
+    args:
+      - name: url
+        required: true
+        description: YouTube video URL or video ID
+      - name: output-dir
+        required: false
+        description: Output directory
+
+  classify:
+    description: Classify frames in an existing directory
+    args:
+      - name: frames-dir
+        required: true
+        description: Directory containing frames to classify
+      - name: classifier
+        required: false
+        default: ocr
+        description: Classification method (ocr, claude, gpt4v)
+
+  clean:
+    description: Remove cached videos and temp files
+    args:
+      - name: video-id
+        required: false
+        description: Specific video ID to clean (omit for all)
+
+  list:
+    description: List extracted frame sets
+    args: []
+
+  view:
+    description: View extracted frames in terminal with chafa
+    args:
+      - name: video-id
+        required: true
+        description: Video ID to view frames for
+      - name: size
+        required: false
+        default: 80x30
+        description: Image size (WxH)
+      - name: filter
+        required: false
+        description: Filter by frame type (diagram, code, slide, chart)
