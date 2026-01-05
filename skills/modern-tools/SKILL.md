@@ -16,7 +16,7 @@ Track modern replacements for classic Unix tools installed on this system.
 
 ## Inventory Location
 
-`~/.config/pais/modern-tools.yaml`
+`~/.config/pais/skills/modern-tools/inventory.yaml`
 
 ## Tool Mappings
 
@@ -53,7 +53,7 @@ Scan for these modern replacements:
 ## Inventory Format
 
 ```yaml
-# ~/.config/pais/modern-tools.yaml
+# ~/.config/pais/skills/modern-tools/inventory.yaml
 generated: 2026-01-04T12:00:00Z
 tools:
   eza:
