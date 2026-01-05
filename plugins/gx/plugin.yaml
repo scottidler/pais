@@ -7,6 +7,21 @@ plugin:
   language: mixed
   license: MIT
   repository: https://github.com/scottidler/gx
+  install-guide: install.md
+
+verification:
+  guide: install.md
+  checks:
+    files:
+      - skills/gx/SKILL.md
+    commands:
+      - name: gx-installed
+        command: which gx
+        expect-exit: 0
+      - name: gx-version
+        command: gx --version
+        expect-exit: 0
+        expect-contains: gx
 
 pais:
   core_version: ">=0.1.0"
