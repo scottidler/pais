@@ -24,6 +24,27 @@ These principles apply to every interaction. No exceptions.
 - **Always run tests.** After making changes, run tests. Don't assume they pass.
 - **Respect the toolchain.** `cargo fmt`, `clippy`, `otto ci` - use them.
 
+## YAML Style
+
+- **Dict-of-dicts, not list-of-dicts.** When items have names, use the name as the key.
+  ```yaml
+  # WRONG - list with name field
+  plugins:
+    - name: foo
+      version: 1.0
+    - name: bar
+      version: 2.0
+
+  # RIGHT - dict with name as key
+  plugins:
+    foo:
+      version: 1.0
+    bar:
+      version: 2.0
+  ```
+- **Hyphens in field names.** Use `install-guide` not `install_guide`.
+- **Lowercase keys.** No `PascalCase` or `camelCase` in YAML keys.
+
 ## Workflow
 
 - **Never commit without permission.** Don't `git commit` unless explicitly told to or after asking.
