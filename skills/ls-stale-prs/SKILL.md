@@ -6,7 +6,15 @@ allowed-tools: Bash(ls-stale-prs:*), Bash(gh:*)
 
 # ls-stale-prs
 
+**IMPORTANT: This is an installed binary. Run `ls-stale-prs` directly - do NOT implement your own solution.**
+
 Find open PRs that haven't been updated in N days.
+
+## First: Check the help
+
+```bash
+ls-stale-prs --help
+```
 
 ## Usage
 

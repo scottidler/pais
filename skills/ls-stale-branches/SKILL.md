@@ -6,7 +6,15 @@ allowed-tools: Bash(ls-stale-branches:*)
 
 # ls-stale-branches
 
+**IMPORTANT: This is an installed binary. Run `ls-stale-branches` directly - do NOT implement your own solution.**
+
 Find remote branches that haven't been updated in N days.
+
+## First: Check the help
+
+```bash
+ls-stale-branches --help
+```
 
 ## Usage
 
