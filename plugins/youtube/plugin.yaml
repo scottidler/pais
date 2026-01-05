@@ -1,0 +1,110 @@
+plugin:
+  name: youtube
+  version: 0.2.0
+  description: Extract transcripts, chapters, comments, and generate summaries from YouTube videos
+  authors:
+    - Scott Idler <scott.a.idler@gmail.com>
+  language: python
+  license: MIT
+  keywords:
+    - youtube
+    - transcript
+    - video
+    - summary
+    - chapters
+    - comments
+    - research
+    - learning
+    - fabric
+
+pais:
+  core_version: ">=0.1.0"
+
+provides:
+  youtube:
+    contract: YouTubeProvider
+    service: youtube-extraction
+
+consumes:
+  patterns:
+    contract: PatternProvider
+    optional: true
+
+hooks:
+  PreToolUse: []
+  PostToolUse: []
+  Stop: []
+  SessionStart: []
+  SessionEnd: []
+
+config:
+  output-dir:
+    type: string
+    required: false
+    default: ~/.config/pais/research/youtube
+  patterns-dir:
+    type: string
+    required: false
+    default: ~/repos/danielmiessler/Fabric/data/patterns
+
+actions:
+  transcript:
+    description: Extract transcript from a YouTube video
+    args:
+      - name: url
+        required: true
+        description: YouTube video URL or video ID
+      - name: format
+        required: false
+        default: text
+        description: Output format (text, json, srt)
+
+  chapters:
+    description: Extract chapters/timestamps from video
+    args:
+      - name: url
+        required: true
+        description: YouTube video URL or video ID
+
+  info:
+    description: Get video metadata (title, channel, duration, description)
+    args:
+      - name: url
+        required: true
+        description: YouTube video URL or video ID
+
+  comments:
+    description: Get video comments (requires YOUTUBE_API_KEY)
+    args:
+      - name: url
+        required: true
+        description: YouTube video URL or video ID
+      - name: max-results
+        required: false
+        default: 100
+        description: Maximum number of comments to fetch
+
+  summarize:
+    description: Get transcript and metadata formatted for LLM analysis
+    args:
+      - name: url
+        required: true
+        description: YouTube video URL or video ID
+      - name: pattern
+        required: false
+        default: extract_wisdom
+        description: Fabric pattern to suggest (extract_wisdom, summarize, etc.)
+
+  pipe:
+    description: Output plain text transcript for piping to fabric
+    args:
+      - name: url
+        required: true
+        description: YouTube video URL or video ID
+
+  all:
+    description: Extract everything (info, chapters, transcript, comments)
+    args:
+      - name: url
+        required: true
+        description: YouTube video URL or video ID
