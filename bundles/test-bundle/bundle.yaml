@@ -1,0 +1,24 @@
+bundle:
+  name: test-bundle
+  version: 1.0.0
+  description: A collection of related plugins
+  author: Your Name
+  license: MIT
+  pais-version: ">=0.2.0"
+
+# Plugins in this bundle (installed in order)
+plugins:
+  # example-plugin:
+  #   required: true
+  #   description: Why this plugin is included
+
+# Environment variables to set
+environment: {}
+
+# Commands to run after all plugins installed
+post-install: []
+  # - command: pais skill index --rebuild
+  #   description: Rebuild skill index
+
+# Bundles that conflict with this one
+conflicts: []
