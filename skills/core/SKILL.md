@@ -51,6 +51,15 @@ These principles apply to every interaction. No exceptions.
 - **Never commit without permission.** Don't `git commit` unless explicitly told to or after asking.
 - **Don't guess on ambiguity.** Ask for clarification rather than making assumptions.
 
+## CLI Tools Are Not Skills
+
+These are CLI tools to run via Bash, NOT skills to invoke with `/`:
+- `gh` — GitHub CLI. Run directly: `gh pr list`, `gh repo view`, etc.
+- `git` — Version control. Run directly.
+- `cargo`, `uv`, `npm` — Package managers. Run directly.
+
+Only items in the "Available Skills" table are invocable as `/skill-name`.
+
 ## Forbidden
 
 - **No time/effort estimates.** Never provide duration estimates. They're meaningless.

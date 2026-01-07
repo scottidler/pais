@@ -18,7 +18,7 @@ When researching a topic, follow this structured approach:
 
 ### 1. GitHub Repository Search
 
-Search for relevant repositories using `gh search repos`:
+Search for relevant repositories using the `gh` CLI (run via Bash, not a skill):
 
 ```bash
 # Search by topic
