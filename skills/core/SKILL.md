@@ -17,6 +17,7 @@ These principles apply to every interaction. No exceptions.
 
 ## Code
 
+- **Sane defaults with override.** Provide sensible defaults that work out of the box. Always allow users to override them.
 - **No obvious comments.** Comments above self-explanatory code is noise. Only comment tricky or arcane logic.
 - **No magic numbers.** Numeric literals should be named constants that document their meaning.
 - **Lowercase names.** Prefer lowercase for folder and file names. Use hyphens over underscores as separators.
