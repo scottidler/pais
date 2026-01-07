@@ -339,6 +339,56 @@ fn process(input: &str) -> Result<Output> {
 
 Use builder pattern or Default + modifications for structs with many fields.
 
+## Version Bumping with `bump`
+
+Use `bump` to increment versions, commit changes, and create git tags in one step.
+
+### Correct Workflow
+
+**IMPORTANT**: Do NOT commit changes before running bump. Leave all changes unstaged.
+
+```bash
+# 1. Make your code changes (leave them unstaged/untracked)
+# 2. Run bump with your commit message piped in:
+echo "Add new feature X" | bump
+
+# 3. Push commit and tags:
+git push && git push --tags
+```
+
+### What bump does
+
+1. Stages ALL changes (your code changes + Cargo.toml)
+2. Updates version in Cargo.toml (patch bump by default)
+3. Commits everything with your message
+4. Creates a git tag (e.g., v0.2.3)
+
+### Options
+
+```bash
+bump             # Patch bump (x.y.Z) - DEFAULT when no flag specified
+bump -m          # Minor bump (x.Y.0)
+bump -M          # Major bump (X.0.0)
+bump -n          # Dry run - preview without applying
+```
+
+**Note**: Patch version (x.y.Z) is incremented by default. Use `-m` for minor or `-M` for major bumps.
+
+### Common Mistake
+
+❌ **WRONG** - Committing first, then running bump:
+```bash
+git add -A && git commit -m "my changes"  # WRONG!
+bump  # Fails - no changes left to commit
+```
+
+✅ **RIGHT** - Let bump handle the commit:
+```bash
+# Make changes, leave unstaged
+echo "my changes" | bump
+git push && git push --tags
+```
+
 ## What NOT to Do
 
 - ❌ Don't use `anyhow` — use `eyre`
@@ -349,4 +399,5 @@ Use builder pattern or Default + modifications for structs with many fields.
 - ❌ Don't use `println!` for errors — use `eprintln!`
 - ❌ Don't skip error context — always use `.context()`
 - ❌ Don't use XML for configuration — use YAML or JSON
+- ❌ Don't commit before running `bump` — let bump handle the commit
 
