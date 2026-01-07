@@ -37,3 +37,40 @@ environment:
     clone:
       github: scottidler/clone
       description: Git clone to repos-dir/{org}/{repo}
+
+# MCP (Model Context Protocol) server configuration
+mcp:
+  # Source files for MCP server definitions (first one with a server wins)
+  sources:
+    - ~/.mcp.json
+
+  # Default profile when none specified (empty = no MCPs for minimal sessions)
+  default-profile: minimal
+
+  # Named profiles
+  profiles:
+    minimal: []
+    github:
+      - multi-account-github
+    slack:
+      - slack
+    work:
+      - multi-account-github
+      - slack
+      - atlassian
+    all:
+      - multi-account-github
+      - slack
+      - atlassian
+
+  # Additional server definitions (supplements sources)
+  servers:
+    multi-account-github:
+      command: multi-account-github-mcp
+      args:
+        - serve
+    atlassian:
+      command: npx
+      args:
+        - -y
+        - "@anthropic/mcp-server-atlassian"
