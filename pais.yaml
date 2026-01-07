@@ -74,3 +74,49 @@ mcp:
       args:
         - -y
         - "@anthropic/mcp-server-atlassian"
+
+# Skills configuration
+skills:
+  profiles:
+    dev:
+      - core
+      - rust-coder
+      - python-coder
+      - otto
+      - clone
+      - gx
+      - bump
+      - rkvr
+      - whitespace
+      - tech-researcher
+    research:
+      - core
+      - fabric
+      - tech-researcher
+      - youtube
+    writing:
+      - core
+      - writing-researcher
+      - fabric
+    audit:
+      - core
+      - ls-git-repos
+      - ls-github-repos
+      - ls-stale-branches
+      - ls-stale-prs
+      - ls-owners
+      - reposlug
+    shell:
+      - core
+      - aka
+      - dashify
+      - modern-tools
+      - cidr
+    hobbies:
+      - core
+      - youtube
+      - youtube-frames
+      - fabric
+      - building-researcher
+      - football-researcher
+    all: []  # empty whitelist = no filtering = load all skills
