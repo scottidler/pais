@@ -42,9 +42,12 @@ Use these crates for standard functionality:
 | Purpose | Crate | Notes |
 |---------|-------|-------|
 | CLI parsing | `clap` | With `derive` feature |
-| Error handling | `eyre` | NOT anyhow |
+| Error handling | `eyre` | NOT anyhow (for CLIs) |
 | Logging | `log` + `env_logger` | File output |
 | Serialization | `serde` + `serde_yaml` | With `derive` feature |
+| JSON output | `serde_json` | For pipeline/machine output |
+| Async runtime | `tokio` | With `full` feature |
+| Parallelism | `rayon` | For `par_iter` |
 | Terminal colors | `colored` | |
 | Directory paths | `dirs` | For config/data dirs |
 
@@ -59,9 +62,82 @@ cargo add serde --features derive
 cargo add serde_yaml
 ```
 
+## Code Organization
+
+### lib.rs + main.rs Pattern
+
+**Always separate CLI from implementation.** Put business logic in `lib.rs`, CLI handling in `main.rs`:
+
+```
+src/
+├── main.rs    # CLI parsing, calls lib functions
+├── lib.rs     # Core implementation, testable
+├── cli.rs     # Clap structs and parsing
+└── config.rs  # Configuration types
+```
+
+This pattern:
+- **Isolates testable code** — test `lib.rs` without CLI overhead
+- **Enables reuse** — other tools can use your library
+- **Cleaner separation** — CLI concerns don't pollute business logic
+
+```rust
+// src/lib.rs
+pub fn process_files(paths: &[PathBuf], options: &Options) -> Result<Output> {
+    // Core logic here, no CLI types
+}
+
+// src/main.rs
+fn main() -> Result<()> {
+    let cli = Cli::parse();
+    let result = mylib::process_files(&cli.paths, &cli.into())?;
+    // Handle output
+    Ok(())
+}
+```
+
+### Async vs Sync vs Parallel
+
+**Prefer async over sync** for I/O-bound operations (network, filesystem):
+
+```rust
+#[tokio::main]
+async fn main() -> Result<()> {
+    let result = do_work().await?;
+    Ok(())
+}
+```
+
+**Use `par_iter` for embarrassingly parallel problems** — when you have many independent items to process:
+
+```rust
+use rayon::prelude::*;
+
+// Process files in parallel
+let results: Vec<_> = files
+    .par_iter()
+    .map(|f| process_file(f))
+    .collect();
+
+// Filter in parallel
+let valid: Vec<_> = items
+    .par_iter()
+    .filter(|x| x.is_valid())
+    .collect();
+```
+
+| Scenario | Approach |
+|----------|----------|
+| I/O-bound (network, files) | async (tokio) |
+| CPU-bound, many independent items | `par_iter` (rayon) |
+| CPU-bound, complex dependencies | threads |
+| Simple, sequential | sync |
+
 ## Error Handling Pattern
 
-Use `eyre::Result` and wrap errors with `.context()`:
+**For binaries (CLIs):** Use `eyre::Result` and wrap errors with `.context()`:
+
+**For libraries:** Consider `thiserror` for typed errors that consumers can match on.
 
 ```rust
 use eyre::{Context, Result};
@@ -307,6 +383,30 @@ println!("Created {}", filename.cyan().bold());
 println!("Version: {}", version.dimmed());
 ```
 
+### Output Format Detection
+
+For tools that output structured data, detect TTY vs pipeline and adjust format:
+
+- **TTY (interactive)**: YAML for human readability
+- **Pipeline (piped)**: JSON for machine parsing
+
+```rust
+use std::io::IsTerminal;
+
+fn output_data<T: Serialize>(data: &T) -> Result<()> {
+    if std::io::stdout().is_terminal() {
+        // Human-readable YAML for interactive use
+        println!("{}", serde_yaml::to_string(data)?);
+    } else {
+        // Machine-parseable JSON for pipelines
+        println!("{}", serde_json::to_string(data)?);
+    }
+    Ok(())
+}
+```
+
+This allows piping to `jq` or other tools while keeping interactive output readable.
+
 ## Code Style
 
 - **Imports:** Group by std, external crates, then internal modules
@@ -339,59 +439,13 @@ fn process(input: &str) -> Result<Output> {
 
 Use builder pattern or Default + modifications for structs with many fields.
 
-## Version Bumping with `bump`
+## Version Bumping
 
-Use `bump` to increment versions, commit changes, and create git tags in one step.
-
-### Correct Workflow
-
-**IMPORTANT**: Do NOT commit changes before running bump. Leave all changes unstaged.
-
-```bash
-# 1. Make your code changes (leave them unstaged/untracked)
-# 2. Run bump with your commit message piped in:
-echo "Add new feature X" | bump
-
-# 3. Push commit and tags:
-git push && git push --tags
-```
-
-### What bump does
-
-1. Stages ALL changes (your code changes + Cargo.toml)
-2. Updates version in Cargo.toml (patch bump by default)
-3. Commits everything with your message
-4. Creates a git tag (e.g., v0.2.3)
-
-### Options
-
-```bash
-bump             # Patch bump (x.y.Z) - DEFAULT when no flag specified
-bump -m          # Minor bump (x.Y.0)
-bump -M          # Major bump (X.0.0)
-bump -n          # Dry run - preview without applying
-```
-
-**Note**: Patch version (x.y.Z) is incremented by default. Use `-m` for minor or `-M` for major bumps.
-
-### Common Mistake
-
-❌ **WRONG** - Committing first, then running bump:
-```bash
-git add -A && git commit -m "my changes"  # WRONG!
-bump  # Fails - no changes left to commit
-```
-
-✅ **RIGHT** - Let bump handle the commit:
-```bash
-# Make changes, leave unstaged
-echo "my changes" | bump
-git push && git push --tags
-```
+For version bumping, tagging, and release workflows, see the `/bump` skill.
 
 ## What NOT to Do
 
-- ❌ Don't use `anyhow` — use `eyre`
+- ❌ Don't use `anyhow` — use `eyre` for CLIs (use `thiserror` for libraries)
 - ❌ Don't use `.unwrap()` in production code
 - ❌ Don't hardcode dependency versions in Cargo.toml
 - ❌ Don't use `cargo new` for CLIs — use `scaffold`
@@ -399,5 +453,4 @@ git push && git push --tags
 - ❌ Don't use `println!` for errors — use `eprintln!`
 - ❌ Don't skip error context — always use `.context()`
 - ❌ Don't use XML for configuration — use YAML or JSON
-- ❌ Don't commit before running `bump` — let bump handle the commit
 
