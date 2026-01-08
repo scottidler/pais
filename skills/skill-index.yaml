@@ -108,9 +108,9 @@ skills:
     - shell
     - startup
     tier: deferred
-  rust-coder:
-    name: rust-coder
-    path: rust-coder/SKILL.md
+  rust-cli-coder:
+    name: rust-cli-coder
+    path: rust-cli-coder/SKILL.md
     description: Write Rust code using Scott's conventions. USE WHEN creating Rust CLIs, libraries, reviewing Rust code, or when the user mentions Rust, cargo, or CLI tools.
     triggers:
     - cargo

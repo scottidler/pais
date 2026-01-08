@@ -73,14 +73,15 @@ mcp:
       command: npx
       args:
         - -y
-        - "@anthropic/mcp-server-atlassian"
+        - mcp-remote
+        - https://mcp.atlassian.com/v1/sse
 
 # Skills configuration
 skills:
   profiles:
     dev:
       - core
-      - rust-coder
+      - rust-cli-coder
       - python-coder
       - otto
       - clone

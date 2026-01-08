@@ -73,7 +73,7 @@ When you have changes beyond Cargo.toml, bump opens your editor (`$VISUAL` → `
 
 ## Integration with Rust Projects
 
-For Rust projects using the `/rust-coder` conventions, the version set by bump is picked up by `build.rs` and exposed via the `GIT_DESCRIBE` environment variable, which clap uses for `--version` output.
+For Rust projects using the `/rust-cli-coder` conventions, the version set by bump is picked up by `build.rs` and exposed via the `GIT_DESCRIBE` environment variable, which clap uses for `--version` output.
 
 ## What NOT to Do
 

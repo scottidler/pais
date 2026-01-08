@@ -1,6 +1,6 @@
 # PAIS Architecture
 
-> Auto-generated on 2026-01-04 23:39:57 by `pais`
+> Auto-generated on 2026-01-06 22:46:52 by `pais`
 
 ## Overview
 
@@ -16,12 +16,13 @@
 | modern-tools | deferred | Find and track modern Unix tool replacements in... |
 | ls-github-repos | deferred | List all repositories under a GitHub organizati... |
 | ls-stale-branches | deferred | Find remote branches that haven't been updated ... |
+| bump | deferred | Version bumping tool for Rust projects. Use whe... |
 | gx | deferred | Multi-repo Git operations - bulk changes, PRs, ... |
 | ls-git-repos | deferred | Recursively find all local git repositories. Us... |
 | otto | deferred | Otto task runner for builds and CI. Use when ru... |
 | ls-stale-prs | deferred | Find open PRs that haven't been updated in N da... |
 | rkvr | deferred | Safe file deletion with archiving and recovery.... |
-| rust-coder | deferred | Write Rust code using Scott's conventions. USE ... |
+| rust-cli-coder | deferred | Write Rust CLI code using Scott's conventions. USE ... |
 | python-coder | deferred | Write Python code using Scott's conventions. Us... |
 | aka | deferred | High-performance shell alias manager. Use when ... |
 | reposlug | deferred | Extract owner/repo slug from a git remote. Use ... |

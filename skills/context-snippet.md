@@ -16,14 +16,14 @@
 | **python-coder** | Write Python code using Scott's conventions. Use when cre... | code, creating, package, project, python, reviewing, script |
 | **reposlug** | Extract owner/repo slug from a git remote. Use for script... | git |
 | **rkvr** | Safe file deletion with archiving and recovery. Use rmrf ... | - |
-| **rust-coder** | Write Rust code using Scott's conventions. USE WHEN creat... | cargo, cli, code, creating, librarie, mention, reviewing, rust, tool |
+| **rust-cli-coder** | Write Rust CLI code using Scott's conventions. USE WHEN creat... | cargo, cli, code, creating, librarie, mention, reviewing, rust, tool |
 | **whitespace** | Remove trailing whitespace from files. Use as a linting s... | - |
 
 ## Workflow Routing
 
 Some skills have specific workflows for common tasks:
 
-### rust-coder
+### rust-cli-coder
 
 | Intent | Workflow |
 |--------|----------|
