@@ -44,12 +44,9 @@ mcp:
   sources:
     - ~/.mcp.json
 
-  # Default profile when none specified (empty = no MCPs for minimal sessions)
-  default-profile: minimal
-
-  # Named profiles
+  # Named profiles (first profile is the default when no -m flag provided)
   profiles:
-    minimal: []
+    none: []
     github:
       - multi-account-github
     slack:
