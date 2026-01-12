@@ -51,10 +51,6 @@ mcp:
       - multi-account-github
     slack:
       - slack
-    work:
-      - multi-account-github
-      - slack
-      - atlassian
     all:
       - multi-account-github
       - slack
@@ -84,9 +80,12 @@ skills:
       - clone
       - gx
       - bump
+      - install
       - rkvr
       - whitespace
       - tech-researcher
+      - create-design-doc
+      - how-to-execute-a-plan
     research:
       - core
       - fabric

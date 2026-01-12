@@ -436,7 +436,47 @@ fn load_config(path: &Path) -> Result<Config> {
 }
 ```
 
-**For libraries:** Use `thiserror` for typed errors consumers can match on.
+**For libraries:** Use `thiserror` for typed errors consumers can match on:
+
+```rust
+use thiserror::Error;
+
+#[derive(Error, Debug)]
+pub enum LibError {
+    #[error("not found: {id}")]
+    NotFound { id: String },
+
+    #[error("invalid input: {0}")]
+    InvalidInput(String),
+
+    #[error("io error: {0}")]
+    Io(#[from] std::io::Error),
+
+    #[error("parse error: {0}")]
+    Parse(#[from] serde_yaml::Error),
+}
+
+pub type Result<T> = std::result::Result<T, LibError>;
+
+// Usage in lib code
+pub fn load(id: &str) -> Result<Data> {
+    let path = find_path(id).ok_or_else(|| LibError::NotFound { id: id.into() })?;
+    let content = std::fs::read_to_string(&path)?;  // auto-converts via #[from]
+    let data: Data = serde_yaml::from_str(&content)?;
+    Ok(data)
+}
+```
+
+Callers can then match on specific variants:
+
+```rust
+match mylib::load("config") {
+    Ok(data) => use_data(data),
+    Err(LibError::NotFound { id }) => create_default(&id),
+    Err(LibError::Parse(e)) => eprintln!("Fix your YAML: {e}"),
+    Err(e) => return Err(e.into()),
+}
+```
 
 **Never use `.unwrap()` in production code.**
 
