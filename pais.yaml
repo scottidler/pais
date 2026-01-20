@@ -73,19 +73,20 @@ mcp:
 skills:
   profiles:
     dev:
-      - core
-      - rust-cli-coder
-      - python-coder
-      - otto
-      - clone
-      - gx
       - bump
-      - install
-      - rkvr
-      - whitespace
-      - tech-researcher
+      - clone
+      - core
       - create-design-doc
+      - fabric
+      - gx
       - how-to-execute-a-plan
+      - install
+      - otto
+      - python-coder
+      - rkvr
+      - rust-cli-coder
+      - tech-researcher
+      - whitespace
     research:
       - core
       - fabric
