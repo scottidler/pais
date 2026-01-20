@@ -5,87 +5,57 @@ description: Create high-quality design documents using Jeffrey Emanuel's Rule o
 
 # Create Design Document
 
-Create comprehensive, high-quality design documents by applying **Jeffrey Emanuel's Rule of Five** — the principle that AI agents produce dramatically better output when forced to review their own work 4-5 times until convergence.
+Apply **Jeffrey Emanuel's Rule of Five**: agents produce best output when forced to review their work 4-5 times until convergence.
 
-> **Reference:** See `~/.config/pais/research/tech/2026-01-10/rule-of-five.md` for the full research on this methodology.
+> **Full research:** `~/.config/pais/research/tech/2026-01-20/jeffrey-emanuel-rule-of-five-agentic-llm.md`
 
-## When to Use This Skill
+## The Five Passes
 
-- Creating a design document for a new feature
-- Writing a technical specification or RFC
-- Documenting architecture decisions
-- Planning a significant refactor or system change
-- Any document that requires high quality and careful thought
+| Pass | Name | Focus |
+|------|------|-------|
+| **1** | **Draft** | Breadth over depth. Get the shape right. Use template below. |
+| **2** | **Correctness** | Fix errors, bugs, invalid assumptions. Is the logic sound? |
+| **3** | **Clarity** | Can someone else understand and implement this? |
+| **4** | **Edge Cases** | What could go wrong? What's missing? *Ask: "Are we solving the right problem?"* |
+| **5** | **Excellence** | Is this something you'd be proud to ship? |
 
-## The Rule of Five Methodology
+**Task size guidelines:** Small features: 2-3 passes. Large/critical: 4-5 passes.
 
-### Core Principle
+## Process
 
-**"When in doubt, have the agent review its own work 5 times."**
+1. **Gather context** — understand problem, explore codebase, research if needed
+2. **Draft** — use template below, focus on breadth
+3. **Refine** — run passes 2-5, announcing each pass and documenting changes
+4. **Converge** — when no significant changes, document is ready
 
-The output converges after 4-5 iterations. Only at that point can you begin to trust the output.
+See [example.md](example.md) for a sample review process.
 
-### Review Pass Structure
+## Prompts for Each Pass
 
-Each review pass focuses on different aspects, mixing "in-the-small" (details) with "in-the-large" (architecture):
+**Correctness:**
+> "Review with 'fresh eyes' for logical errors, invalid assumptions, technical inaccuracies. Fix what you find."
 
-| Pass | Focus Area | Questions to Ask |
-|------|------------|------------------|
-| 1 | **Completeness** | Are all sections filled? Missing requirements? Gaps in the design? |
-| 2 | **Correctness** | Are there logical errors? Wrong assumptions? Technical inaccuracies? |
-| 3 | **Edge Cases** | What could go wrong? Error handling? Failure modes? Security issues? |
-| 4 | **Architecture** | Does this fit the larger system? Scalability? Dependencies? Trade-offs? |
-| 5 | **Clarity** | Is it understandable? Could someone implement from this? Ambiguous sections? |
+**Clarity:**
+> "Review as a new team member who must implement this. What's confusing? Simplify."
 
-### Guidelines by Task Size
+**Edge Cases:**
+> "What are the weakest parts? What could go wrong? What's missing?"
 
-| Task Size | Recommended Passes |
-|-----------|-------------------|
-| Small features | 2-3 passes |
-| Medium features | 3-4 passes |
-| Large/complex features | 4-5 passes |
-| Critical systems | 5 passes (full) |
+**Excellence:**
+> "Final pass. Make it shine. Proud to ship? Fits the larger system?"
 
-## Design Document Process
+## Output
 
-### Phase 1: Information Gathering
+Save to `docs/design/YYYY-MM-DD-feature-name.md` or user-specified location.
 
-Before writing, gather context:
+## Key Rules
 
-1. **Understand the problem**
-   - What problem are we solving?
-   - Who are the users/stakeholders?
-   - What are the constraints?
+- Start with the problem, not the solution
+- Be explicit about non-goals
+- Always include alternatives considered
+- NEVER include time estimates
 
-2. **Explore the codebase**
-   - What existing code is relevant?
-   - What patterns does the codebase use?
-   - What are the integration points?
-
-3. **Research if needed**
-   - Are there industry-standard approaches?
-   - What have others done?
-   - Are there relevant libraries or tools?
-
-### Phase 2: Initial Draft
-
-Create the first draft using the template below.
-
-### Phase 3: Iterative Review (Rule of Five)
-
-For each review pass:
-
-1. **Announce the review focus** (e.g., "Review Pass 2: Checking for correctness...")
-2. **Systematically examine** each section through that lens
-3. **Make improvements** inline
-4. **Document changes made** at the end of the pass
-5. **Assess convergence** — if no significant changes in 2 consecutive passes, document is ready
-
-### Phase 4: Final Output
-
-Present the converged design document with a summary of the review process.
-
-## Design Document Template
+## Template
 
 ```markdown
 # Design Document: [Feature Name]
@@ -93,155 +63,76 @@ Present the converged design document with a summary of the review process.
 **Author:** [Name]
 **Date:** [YYYY-MM-DD]
 **Status:** Draft | In Review | Approved
-**Review Passes:** [X/5]
+**Review Passes Completed:** [X/5]
 
 ## Summary
-
-[2-3 sentence overview of what this design accomplishes]
+[2-3 sentence overview]
 
 ## Problem Statement
 
 ### Background
-[Context and history leading to this design]
+[Context and history]
 
 ### Problem
-[Clear statement of the problem being solved]
+[Clear statement of the problem]
 
 ### Goals
 - [Goal 1]
-- [Goal 2]
 
 ### Non-Goals
-- [Explicitly out of scope item 1]
-- [Explicitly out of scope item 2]
+- [Explicitly out of scope]
 
 ## Proposed Solution
 
 ### Overview
-[High-level description of the solution]
+[High-level description]
 
 ### Architecture
-[System architecture, components, and their interactions]
+[Components and interactions]
 
 ### Data Model
-[Data structures, schemas, or models involved]
+[Structures, schemas, models]
 
 ### API Design
-[Interfaces, endpoints, or function signatures]
+[Interfaces, endpoints, signatures]
 
 ### Implementation Plan
-[Phased approach or steps to implement]
+[Phased approach]
 
 ## Alternatives Considered
 
 ### Alternative 1: [Name]
-- **Description:** [What this approach would look like]
+- **Description:** [Approach]
 - **Pros:** [Benefits]
 - **Cons:** [Drawbacks]
 - **Why not chosen:** [Reasoning]
 
-### Alternative 2: [Name]
-[Same structure]
-
 ## Technical Considerations
 
 ### Dependencies
-[What this depends on, internal and external]
+[Internal and external]
 
 ### Performance
-[Expected performance characteristics, benchmarks if relevant]
+[Characteristics, benchmarks]
 
 ### Security
-[Security implications and mitigations]
+[Implications and mitigations]
 
 ### Testing Strategy
-[How this will be tested]
+[How tested]
 
 ### Rollout Plan
-[How this will be deployed/released]
+[Deployment approach]
 
 ## Risks and Mitigations
 
 | Risk | Likelihood | Impact | Mitigation |
 |------|------------|--------|------------|
-| [Risk 1] | Low/Med/High | Low/Med/High | [How to address] |
+| [Risk] | Low/Med/High | Low/Med/High | [Mitigation] |
 
 ## Open Questions
-
-- [ ] [Question 1 that needs resolution]
-- [ ] [Question 2]
+- [ ] [Question needing resolution]
 
 ## References
-
-- [Link to relevant docs, PRs, or resources]
+- [Links to relevant docs]
 ```
-
-## Example Review Process
-
-```
-=== REVIEW PASS 1: COMPLETENESS ===
-Checking all sections are filled...
-- Summary: OK
-- Problem Statement: Missing non-goals section
-- Proposed Solution: API Design section is empty
-- Alternatives: Only one alternative listed, should have 2+
-- Risks: Table is incomplete
-
-Changes made:
-- Added non-goals section with 3 items
-- Drafted initial API design
-- Added second alternative approach
-- Completed risk table with 4 entries
-
-=== REVIEW PASS 2: CORRECTNESS ===
-Checking for logical errors and technical accuracy...
-- Found incorrect assumption about database constraint
-- API endpoint naming doesn't follow existing conventions
-- Implementation plan has dependency ordering issue
-
-Changes made:
-- Corrected database constraint description
-- Renamed endpoints to match /api/v2/* pattern
-- Reordered implementation steps
-
-=== REVIEW PASS 3: EDGE CASES ===
-[...continues...]
-
-=== REVIEW PASS 4: ARCHITECTURE ===
-[...continues...]
-
-=== REVIEW PASS 5: CLARITY ===
-Checking readability and implementability...
-- No significant changes needed
-- Document has converged
-
-FINAL STATUS: Document complete after 5 passes
-```
-
-## Output Storage
-
-Save design documents to the project's `docs/` directory or a dedicated location:
-
-```
-docs/design/
-├── YYYY-MM-DD-feature-name.md
-└── ...
-```
-
-Or for user-specified locations.
-
-## Tips for Better Design Docs
-
-1. **Start with the problem, not the solution** — ensure the problem is well-understood before proposing fixes
-2. **Be explicit about non-goals** — prevents scope creep and misunderstanding
-3. **Always include alternatives** — shows you've considered options
-4. **Make it implementable** — someone should be able to code from this
-5. **Keep it updated** — design docs are living documents
-6. **Trust the process** — the Rule of Five works; don't skip reviews
-7. **NEVER include time/effort estimates** — no "1-2 days", "2 weeks", etc. Focus on WHAT needs to be done, not guessing HOW LONG. Time estimates are unreliable and misleading.
-
-## Related Skills
-
-- `/rust-cli-coder` — for implementing Rust CLIs from designs
-- `/python-coder` — for implementing Python code from designs
-- `/tech-researcher` — for researching approaches before designing
