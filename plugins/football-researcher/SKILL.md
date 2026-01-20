@@ -18,11 +18,11 @@ Research football coaching concepts by searching coaching sites, playbook resour
 **Always save research results to:**
 
 ```
-~/.config/pais/research/football/<topic>/<date>.md
+~/.config/pais/research/football/<date>/<topic>.md
 ```
 
-- `<topic>`: lowercase, hyphenated topic name (e.g., `wing-t-series`, `cover-3-beaters`, `youth-tackling-drills`)
 - `<date>`: ISO date format `YYYY-MM-DD`
+- `<topic>`: lowercase, hyphenated topic name (e.g., `wing-t-series`, `cover-3-beaters`, `youth-tackling-drills`)
 
 Create the directory if it doesn't exist before writing.
 

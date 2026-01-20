@@ -110,11 +110,11 @@ To apply a pattern:
 **Always save research results to:**
 
 ```
-~/.config/pais/research/tech/<topic>/<date>.md
+~/.config/pais/research/tech/<date>/<topic>.md
 ```
 
-- `<topic>`: lowercase, hyphenated topic name (e.g., `slack-mcp`, `rust-http-clients`)
 - `<date>`: ISO date format `YYYY-MM-DD`
+- `<topic>`: lowercase, hyphenated topic name (e.g., `slack-mcp`, `rust-http-clients`)
 
 Create the directory if it doesn't exist before writing.
 

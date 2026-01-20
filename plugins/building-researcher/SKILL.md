@@ -18,11 +18,11 @@ Research construction and DIY projects by searching YouTube, building forums, an
 **Always save research results to:**
 
 ```
-~/.config/pais/research/building/<topic>/<date>.md
+~/.config/pais/research/building/<date>/<topic>.md
 ```
 
-- `<topic>`: lowercase, hyphenated topic name (e.g., `shed-foundation`, `electrical-rough-in`, `deck-framing`)
 - `<date>`: ISO date format `YYYY-MM-DD`
+- `<topic>`: lowercase, hyphenated topic name (e.g., `shed-foundation`, `electrical-rough-in`, `deck-framing`)
 
 Create the directory if it doesn't exist before writing.
 

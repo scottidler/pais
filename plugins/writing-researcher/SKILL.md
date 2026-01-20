@@ -18,11 +18,11 @@ Research writing craft and publishing by searching writing communities, author b
 **Always save research results to:**
 
 ```
-~/.config/pais/research/writing/<topic>/<date>.md
+~/.config/pais/research/writing/<date>/<topic>.md
 ```
 
-- `<topic>`: lowercase, hyphenated topic name (e.g., `three-act-structure`, `middle-grade-conventions`)
 - `<date>`: ISO date format `YYYY-MM-DD`
+- `<topic>`: lowercase, hyphenated topic name (e.g., `three-act-structure`, `middle-grade-conventions`)
 
 Create the directory if it doesn't exist before writing.
 

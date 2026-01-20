@@ -7,7 +7,7 @@ description: Create high-quality design documents using Jeffrey Emanuel's Rule o
 
 Create comprehensive, high-quality design documents by applying **Jeffrey Emanuel's Rule of Five** — the principle that AI agents produce dramatically better output when forced to review their own work 4-5 times until convergence.
 
-> **Reference:** See `~/.config/pais/research/tech/rule-of-five/2026-01-10.md` for the full research on this methodology.
+> **Reference:** See `~/.config/pais/research/tech/2026-01-10/rule-of-five.md` for the full research on this methodology.
 
 ## When to Use This Skill
 

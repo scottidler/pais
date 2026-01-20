@@ -122,7 +122,7 @@ Recommended patterns from `~/repos/danielmiessler/Fabric/data/patterns/`:
 
 Save research to:
 ```
-~/.config/pais/research/youtube/<video-slug>/<date>.md
+~/.config/pais/research/youtube/<date>/<video-slug>.md
 ```
 
 ## Dependencies
