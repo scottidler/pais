@@ -51,9 +51,15 @@ mcp:
       - multi-account-github
     slack:
       - slack
+    pagerduty:
+      - pagerduty
+    oncall:
+      - slack
+      - pagerduty
     all:
       - multi-account-github
       - slack
+      - pagerduty
       - atlassian
 
   # Additional server definitions (supplements sources)
@@ -73,6 +79,7 @@ mcp:
 skills:
   profiles:
     dev:
+      - acli
       - bump
       - clone
       - core
