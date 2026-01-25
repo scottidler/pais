@@ -61,6 +61,8 @@ Follow the design doc specifications exactly. If the design doc uses `/rust-cli-
 
 ### Step 3: Write Tests
 
+**Make sure we have tests that ensure the correctness of our implementation.**
+
 Tests must accompany the implementation:
 
 ```rust
