@@ -74,6 +74,11 @@ mcp:
         - -y
         - mcp-remote
         - https://mcp.atlassian.com/v1/sse
+    slack:
+      command: /home/saidler/repos/slack-mcp-server/slack-mcp-server
+      args:
+        - --transport
+        - stdio
 
 # Skills configuration
 skills:
